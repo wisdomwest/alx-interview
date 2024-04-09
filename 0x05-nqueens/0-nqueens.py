@@ -17,6 +17,7 @@ def check(board, row, col, n):
             return False
     return True
 
+
 def solve(board, col, n):
     '''solve n-queens problem'''
     if col == n:
@@ -27,6 +28,7 @@ def solve(board, col, n):
             board[i][col] = 1
             solve(board, col + 1, n)
             board[i][col] = 0
+
 
 def nqueens(n):
     '''n-queens problem'''
