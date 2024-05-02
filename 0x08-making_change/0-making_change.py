@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 '''refer to readme for more information'''
 
+
 def makeChange(coins, total):
     '''makeChange function'''
     if total <= 0:
