@@ -2,15 +2,6 @@
 '''refer to the README.md file for the problem statement'''
 
 
-def is_prime(num):
-    if num < 2:
-        return False
-    for i in range(2, int(num**0.5) + 1):
-        if num % i == 0:
-            return False
-    return True
-
-
 def isWinner(x, nums):
     maria_wins = 0
     ben_wins = 0
@@ -30,3 +21,12 @@ def isWinner(x, nums):
         return "Ben"
     else:
         return None
+
+
+def is_prime(num):
+    if num < 2:
+        return False
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
