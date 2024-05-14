@@ -3,24 +3,43 @@
 
 
 def isWinner(x, nums):
-    maria_wins = 0
-    ben_wins = 0
+    '''get won by the player'''
+    maria = 0
+    ben = 0
 
-    for i in range(x):
-        n = nums[i]
-        primes = [i for i in range(1, n + 1) if is_prime(i)]
+    for n in nums:
+        rounds = list(range(1, n + 1))
+        prime = prime_count(rounds)
 
-        if len(primes) % 2 == 0:
-            ben_wins += 1
-        else:
-            maria_wins += 1
+        if not prime:
+            ben += 1
+            continue
 
-    if maria_wins > ben_wins:
-        return "Maria"
-    elif ben_wins > maria_wins:
-        return "Ben"
-    else:
+        marias = True
+
+        while(True):
+            if not prime:
+                if marias:
+                    ben += 1
+                else:
+                    maria += 1
+                break
+
+            smallest = prime.pop(0)
+            rounds.remove(smallest)
+
+            for x in rounds:
+                if x % smallest == 0:
+                    rounds.remove(x)
+
+            marias = not marias
+
+    if maria == ben:
         return None
+    if maria > ben:
+        return "Maria"
+
+    return "Ben"
 
 
 def is_prime(num):
@@ -30,3 +49,11 @@ def is_prime(num):
         if num % i == 0:
             return False
     return True
+
+
+def prime_count(rounds):
+    primes = []
+    for num in rounds:
+        if is_prime(num):
+            primes.append(num)
+    return primes
